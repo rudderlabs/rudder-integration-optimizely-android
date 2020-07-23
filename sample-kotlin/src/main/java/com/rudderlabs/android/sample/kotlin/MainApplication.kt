@@ -15,11 +15,12 @@ class MainApplication : Application() {
         super.onCreate()
         rudderClient = RudderClient.getInstance(
             this,
-            "1TSRSskqa15PG7F89tkwEbl5Td8",
+            "1f5zqExMWp0qLrapr8RCAl5n9Tu",
             RudderConfig.Builder()
                 .withDataPlaneUrl("https://7866cc22.ngrok.io")
                 .withLogLevel(RudderLogger.RudderLogLevel.DEBUG)
                 .withFactory(OptimizelyIntegrationFactory.FACTORY)
+                .withLogLevel(RudderLogger.RudderLogLevel.VERBOSE)
                 .build()
         )
     }
