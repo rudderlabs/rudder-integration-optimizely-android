@@ -3,6 +3,8 @@ package com.rudderlabs.android.sample.kotlin
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.rudderstack.android.sdk.core.RudderMessageBuilder
+import com.rudderstack.android.sdk.core.RudderProperty
+import com.rudderstack.android.sdk.core.RudderTraits
 import com.rudderstack.android.sdk.core.TrackPropertyBuilder
 
 class MainActivity : AppCompatActivity() {
@@ -13,42 +15,38 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun sendEvents() {
-        MainApplication.rudderClient.track(
-            RudderMessageBuilder()
-                .setEventName("daily_rewards_claim")
-                .setProperty(
-                    TrackPropertyBuilder()
-                        .setCategory("test_category")
-                        .build()
-                )
-                .setUserId("test_user_id")
+
+        MainApplication.rudderClient.screen(localClassName)
+
+        val property = RudderProperty()
+        property.put("key_1", "val_1")
+        property.put("revenue", 20)
+
+        val childProperty = RudderProperty()
+        childProperty.put("key_c_1", "val_c_1")
+        childProperty.put("key_c_2", "val_c_2")
+        property.put("child_key", childProperty)
+
+        MainApplication.rudderClient.identify(
+            "test_user_idx",
+            RudderTraits()
+                .putEmail("examplex@gmail.com")
+                .putFirstName("Foo")
+                .putLastName("Bar")
+                .putName("Ruchira"),
+            null
         )
 
-        MainApplication.rudderClient.identify("developer_user_id")
+        val attributes = HashMap<String, String>();
+        attributes.put("email", "examplex@gmail.com")
 
-        MainApplication.rudderClient.track(
-            RudderMessageBuilder()
-                .setEventName("level_up")
-                .setProperty(
-                    TrackPropertyBuilder()
-                        .setCategory("test_category")
-                        .build()
-                )
-                .setUserId("test_user_id")
-        )
+        val isEnabled: Boolean =
+            MainApplication.optimizelyClient.isFeatureEnabled("testfeature", "test_user_idx", attributes)
+        if (isEnabled) {
+            MainApplication.rudderClient.track("New Event", property)
+        }
 
-        MainApplication.rudderClient.reset()
+        MainApplication.rudderClient.track("Event2")
 
-        val revenueProperty = TrackPropertyBuilder()
-            .setCategory("test_category")
-            .build()
-        revenueProperty.put("total", 4.99)
-        revenueProperty.put("currency", "USD")
-        MainApplication.rudderClient.track(
-            RudderMessageBuilder()
-                .setEventName("revenue")
-                .setProperty(revenueProperty)
-                .setUserId("test_user_id")
-        )
     }
 }

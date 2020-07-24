@@ -38,13 +38,18 @@ repositories {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
 
-    compileOnly 'com.rudderstack.android.sdk:core:1.0.1'
-    compileOnly 'com.google.code.gson:gson:2.8.6'
-
     testImplementation 'com.android.support.test:rules:1.0.2'
     testImplementation 'com.android.support.test:runner:1.0.2'
     testImplementation "org.robolectric:robolectric:4.3"
     testImplementation "androidx.test:core-ktx:1.2.0"
+
+    // rudderstack dependencies
+    implementation 'com.rudderstack.android.sdk:core:1.0.1'
+    implementation 'com.google.code.gson:gson:2.8.6'
+
+    // optimizely dependencies
+    implementation 'com.optimizely.ab:android-sdk:3.0.0'
+
 }
 
 apply from: './maven.gradle'
