@@ -9,7 +9,7 @@ Rudder is a platform for collecting, storing and routing customer event data to 
 Released under [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0)
 
 ## Getting Started with Optimizely Integration of Android SDK
-1. Add [Optimizely](https://optimizely.google.com) as a destination in the [Dashboard](https://app.rudderlabs.com/)
+1. Add [Optimizely](https://www.optimizely.com/) as a destination in the [Dashboard](https://app.rudderstack.com/)
 
 2. Add these lines to your ```app/build.gradle```
 ```
@@ -19,8 +19,8 @@ repositories {
 ```
 3. Add the dependency under ```dependencies```
 ```
-implementation 'com.rudderstack.android.sdk:core:1.0.1'
-implementation 'com.rudderstack.android.integration:optimizely:0.1.1'
+implementation 'com.rudderstack.android.sdk:core:1.0.2'
+implementation 'com.rudderstack.android.integration:optimizely:0.1.0'
 ```
 
 ## Initialize ```RudderClient```

@@ -35,8 +35,8 @@ public class OptimizelyIntegrationFactory extends RudderIntegration<OptimizelyCl
     private OptimizelyClient optimizelyClient;
     private Map<String, Object> attributes = new HashMap<>();
     List<RudderMessage> trackEvents = new ArrayList<>();
-    // TODO : Use RudderOptions for Experiment Viewed event
 
+    // TODO : Use RudderOptions for Experiment Viewed event
     public static class FACTORY implements Factory {
         private OptimizelyManager manager;
 
@@ -238,5 +238,4 @@ public class OptimizelyIntegrationFactory extends RudderIntegration<OptimizelyCl
             // TODO: Pass options
         }
     }
-
 }

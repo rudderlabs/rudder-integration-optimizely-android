@@ -47,6 +47,5 @@ class MainActivity : AppCompatActivity() {
         }
 
         MainApplication.rudderClient.track("Event2")
-
     }
 }
